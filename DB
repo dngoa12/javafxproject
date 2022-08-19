@@ -1,0 +1,73 @@
+유저 정보 테이블 
+id 아이디 (기본키)
+pw 비밀번호
+name 이름
+birth 생년월일
+email 이메일
+book_cnt 유저 책 대여 수 (최대 대여 수를 생각해서 칼럼 추가, 최대 대여는 5권 까지 생각했습니다.) 
+
+create table user (
+    id varchar2(30) primary key not null,
+    pw varchar2(30) not null,
+    name varchar(30) not null,
+    birth varchar2(10) not null,
+    email varchar2(30),
+    book_cnt number default 0
+);
+
+insert into buser values ('admin', 'admin', '관리자', '19900101', 'admin@naver.com', 0);
+insert into buser values ('user1', 'user1', '홍길동', '19910101', 'hong@naver.com', 0);
+insert into buser values ('user2', 'user2', '이순신', '19920101', 'leesun@naver.com', 0);
+insert into buser values ('user3', 'user3', '유관순', '19930101', 'yoogwan@naver.com', 0);
+
+
+책 정보 테이블
+bno 책 기본키
+bname 책 이름
+author 저자
+publisher 출판사
+img 이미지 경로 및 이름 (별도의 img 패키지를 사용한다는 가정 하에 경로 입력 )
+
+create table book (
+    bno number primary key not null,
+    bname varchar2(255) not null,
+    author varchar(30) not null,
+    publisher varchar(50) not null,
+    img varchar2(255)
+);
+
+CREATE SEQUENCE bno_seq START WITH 1 INCREMENT BY 1 ; (스퀸스 생성)
+insert into book values (bno_seq.nextval, '코믹 메이플 스토리', '넥슨', '넥슨출판사');
+insert into book values (bno_seq.nextval, '금영석교수님의 코딩비법', '금영석', '에이콘출판사');
+insert into book values (bno_seq.nextval, '마님은 왜 돌쇠에게만 흰 쌀밥을 주었을까?', '에이콘', '에이콘출판사');
+
+
+
+대출 이력 테이블
+rno 이력 테이블 기본키
+bno 책 테이블 기본키
+id  유저 아이디
+out_date 책 대출 일자
+in_date  책 반납 일자  (반납 일자가 없으면 대여 중인 도서)
+
+create table rental_book (
+    rno number primary key not null,
+    bno number not null,
+    id varchar2(30) not null,
+    out_date date not null,
+    in_date date
+);
+
+CREATE SEQUENCE rno_seq START WITH 1 INCREMENT BY 1 ; (스퀸스 생성)
+insert into rental_book values (rno_seq.nextval, 1, 'user1', '2022-08-19', '2022-08-21');
+insert into rental_book values (rno_seq.nextval, 1, 'user2', '2022-08-19', '');
+insert into rental_book values (rno_seq.nextval, 2, 'user2', '2022-08-19', '2022-08-23');
+insert into rental_book values (rno_seq.nextval, 3, 'user3', '2022-08-20', '2020-08-22');
+
+
+
+
+##############################################
+2022-08-19 1차 DB칼럼 생성 이후 수정 사항 발생하면 아래에 기입 예정
+
+최종 수정 2022-08-19
