@@ -98,11 +98,47 @@ on r.id = u.id
 ;
 
 
+
+============= 추가 데이터 입력 =============
+book
+insert into book values (bno_seq.nextval, '이순신 위인전', '이수겸', '다산어린이', '/img/leesunsin.jsp', '오로지 나라와 백성을 생각했던 이순신의 활약상, 그의 행보를 알아봅시다.');
+insert into book values (bno_seq.nextval, '사춘기와 성', '이복영', '예림당', '/img/who_sachungi.jsp', '우리가 어른이 될 때 무슨 변화가 일어날까? 알고 싶은 사람 여기 모여라!'  );
+insert into book values (bno_seq.nextval, '그리스 로마 신화', '토마스 불핀치', '아울북', '/img/greece.jsp', '아이들에게 이야기하는 형식으로 진행되는 그리스 로마 신화! 신들의 이야기에 함께 빠져보아요!'  );
+insert into book values (bno_seq.nextval, '마법천자문', '김창환', '아울북', '/img/mabubchunjamun.jsp', '돌화산에 살아가던 손오공 보리도사의 한자 마법을 보고 매료되어 떠나는 그의 모험을 함께 지켜보세요!');
+insert into book values (bno_seq.nextval, '신', '베르나르 베르베르', '열린책들', '/img/sin.jsp', '신 후보생의 자격으로 신의 학교에 들어간 주인공. 그가 만든 18호 지구 속 이야기 그리고 신이란 무엇일까');
+insert into book values (bno_seq.nextval, '제3 인류', '베르나르 베르베르', '열린책들', '/img/3rd_people.jpg', '인류는 스스로를 구원할 수 있을까! 인류의 파멸을 막기위해 펼친 과학자들의 기상천외한 프로젝트 과연 종말로부터 벗어날 수 있을 것인가');
+insert into book values (bno_seq.nextval, '무인도에서 살아남기', '최덕희', '미래엔아이세움', '/img/moonido.jsp', '극한 상황에서 살아남으려면 모든 과학적 지식과 상식을 동원해야 한다. 과연 이들은 무사히 무인도를 탈출할 수 있을까요?');
+
+buser
+insert into buser values ('user4', 'user4', '세종대왕', '19900108', 'seajong@naver.com', 0);
+insert into buser values ('user5', 'user5', '강호동', '19901001', 'kanghodong@naver.com', 0);
+insert into buser values ('user6', 'user6', '아이유', '19910225', 'iu@naver.com', 0);
+insert into buser values ('user7', 'user7', '이승기', '19920606', 'leesnggi@naver.com', 0);
+insert into buser values ('user8', 'user8', '이수근', '19930707', 'leesugun@naver.com', 0);
+insert into buser values ('user9', 'user9', '은지원', '19940808', 'eunjiwon@naver.com', 0);
+insert into buser values ('user10', 'user10', '나영석', '19990909', 'napd@naver.com', 0);
+insert into buser values ('user11', 'user11', '척춘경', '19901010', 'chuk@naver.com', 0);
+insert into buser values ('user12', 'user12', 'kimgu', '19911111', 'kimgu@naver.com', 0);
+
+rental_book
+insert into rental_book values (rno_seq.nextval, 4, 'user4', '2022-08-22', '2020-08-27');
+insert into rental_book values (rno_seq.nextval, 5, 'user5', '2022-08-22', '2020-08-28');
+insert into rental_book values (rno_seq.nextval, 6, 'user6', '2022-08-22', '2020-08-27');
+insert into rental_book values (rno_seq.nextval, 7, 'user7', '2022-08-23', '');
+insert into rental_book values (rno_seq.nextval, 8, 'user8', '2022-08-23', '2020-08-30');
+insert into rental_book values (rno_seq.nextval, 9, 'user9', '2022-08-24', '');
+insert into rental_book values (rno_seq.nextval, 10, 'user10', '2022-08-25', '2020-08-29');
+insert into rental_book values (rno_seq.nextval, 7, 'user11', '2022-08-25', '2020-08-30');
+insert into rental_book values (rno_seq.nextval, 5, 'user12', '2022-08-26', '2020-08-31');
+============= 추가 데이터 입력 =============
+
+
 ##############################################
 2022-08-19 1차 DB칼럼 생성 이후 수정 사항 발생하면 아래에 기입 예정
 2022-08-22 2차 book 테이블에 b_coment 칼럼 추가 및 내용 입력 - 검색어 : b_coment추가
 2022-08-22 3차 book 테이블에 create 하는 경우 명령어 추가(테이블 생성) - 검색어 : b_coment2추가 start 
 2022-08-23 4차 book, buser, rental_book테이블 join문 및 case when문 반납 미반납 출력 쿼리 추가 - 검색어 : 4차 case when문 
+2022-08-24 5차 book, buser, rental_book 테이블 나중에 추가할 insert 쿼리 추가 - 검색어 : 추가 데이터 입력 
 
-최종 수정 날짜 2022-08-23
+최종 수정 날짜 2022-08-24
 
