@@ -23,5 +23,7 @@ public interface DAO {
 	
 	public Book eachBook(int book_num); // 도서목록 테이블뷰의 특정 로우를 클릭했을 때 각 도서의 정보를 보여주는 메서드
 	
+	public boolean idOk(String id);// 회원목록 회원가입의 DB에서 아이디 중복확인 메서드
+	
 	
 }

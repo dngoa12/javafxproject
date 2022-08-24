@@ -71,4 +71,5 @@ public class LoginController extends InitController implements Initializable{
 	public void userLoginProc() {
 		ls.userLoginProc(root);
 	}
+	
 }
