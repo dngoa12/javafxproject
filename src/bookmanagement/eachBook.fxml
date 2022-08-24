@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookmanagement.AdminController">
+   <children>
+      <ImageView fx:id="eachImage" fitHeight="300.0" fitWidth="230.0" layoutX="63.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="334.0" layoutY="57.0" text="책제목 :" />
+      <Button onAction="#cancelProc" layoutX="505.0" layoutY="350.0" mnemonicParsing="false" text="뒤로" />
+      <Label layoutX="334.0" layoutY="87.0" text="도서번호 :" />
+      <Label layoutX="334.0" layoutY="119.0" text="작가 :" />
+      <Label layoutX="334.0" layoutY="150.0" text="출판사 :" />
+      <Label layoutX="334.0" layoutY="182.0" text="장르 :" />
+      <Label layoutX="334.0" layoutY="211.0" text="카테고리 :" />
+      <Label layoutX="334.0" layoutY="238.0" text="출판년도 :" />
+      <Label layoutX="334.0" layoutY="267.0" text="재고 :" />
+      <Button layoutX="333.0" layoutY="299.0" mnemonicParsing="false" text="연체현황" />
+      <Label fx:id="eachtitle" layoutX="390.0" layoutY="57.0" />
+      <Label fx:id="eachnum" layoutX="397.0" layoutY="87.0" />
+      <Label fx:id="eachauthor" layoutX="374.0" layoutY="119.0" />
+      <Label fx:id="eachpublisher" layoutX="390.0" layoutY="150.0" />
+      <Label fx:id="eachgenre" layoutX="374.0" layoutY="182.0" />
+      <Label fx:id="eachcategory" layoutX="397.0" layoutY="211.0" />
+      <Label fx:id="eachyear" layoutX="397.0" layoutY="238.0" />
+      <Label fx:id="eachcount" layoutX="374.0" layoutY="267.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookmanagement.AdminController">
+   <children>
+      <Label layoutX="32.0" layoutY="30.0" prefHeight="29.0" prefWidth="60.0" />
+      <Label layoutX="104.0" layoutY="30.0" prefHeight="29.0" prefWidth="118.0" text="님 환영합니다" />
+      <Button layoutY="149.0" mnemonicParsing="false" onAction="#admin2" prefHeight="51.0" prefWidth="163.0" text="도서등록" />
+      <Button layoutY="201.0" mnemonicParsing="false" onAction="#admin3" prefHeight="51.0" prefWidth="163.0" text="회원조회" />
+      <Button layoutY="253.0" mnemonicParsing="false" onAction="#admin4" prefHeight="51.0" prefWidth="163.0" text="연체관리" />
+      <Button layoutY="305.0" mnemonicParsing="false" onAction="#admin5" prefHeight="51.0" prefWidth="163.0" text="공지사항관리" />
+      <TableView fx:id="booklist" layoutX="178.0" layoutY="97.0" prefHeight="251.0" prefWidth="412.0">
+        <columns>
+          <TableColumn fx:id="booktitle" prefWidth="53.3333740234375" text="책제목" />
+          <TableColumn fx:id="booknum" prefWidth="62.66668701171875" text="도서번호" />
+            <TableColumn fx:id="bookauthor" prefWidth="53.33331298828125" text="저자" />
+            <TableColumn fx:id="bookpublisher" prefWidth="58.66668701171875" text="출판사" />
+            <TableColumn fx:id="bookgenre" prefWidth="54.66668701171875" text="분야" />
+            <TableColumn fx:id="bookcategory" prefWidth="58.0" text="카테고리" />
+            <TableColumn fx:id="bookyear" prefWidth="60.0" text="출판년도" />
+            <TableColumn fx:id="bookcount" prefWidth="40.0" text="재고" />
+        </columns>
+      </TableView>
+      <Button layoutX="522.0" layoutY="17.0" mnemonicParsing="false" onAction="#logoutProc" text="로그아웃" />
+      <ToggleButton layoutY="97.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="163.0" selected="true" text="도서목록" />
+      <Button layoutX="178.0" layoutY="59.0" mnemonicParsing="false" onAction="#showBookColumn" text="목록보기" />
+   </children>
+</AnchorPane>
