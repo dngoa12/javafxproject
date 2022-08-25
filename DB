@@ -84,16 +84,16 @@ CREATE SEQUENCE rno_seq START WITH 1 INCREMENT BY 1 ; (스퀸스 생성)
 insert into rental_book values (rno_seq.nextval, 1, 'user1', '2022-08-19', '2022-08-21', '2022-08-22');
 insert into rental_book values (rno_seq.nextval, 1, 'user2', '2022-08-19', '', '2022-08-22');
 insert into rental_book values (rno_seq.nextval, 2, 'user2', '2022-08-19', '2022-08-23', '2022-08-24');
-insert into rental_book values (rno_seq.nextval, 3, 'user3', '2022-08-20', '2020-08-22', '2022-08-25');
-insert into rental_book values (rno_seq.nextval, 4, 'user4', '2022-08-22', '2020-08-27', '2022-08-26');
-insert into rental_book values (rno_seq.nextval, 5, 'user5', '2022-08-22', '2020-08-28', '2022-08-26');
-insert into rental_book values (rno_seq.nextval, 6, 'user6', '2022-08-22', '2020-08-27', '2022-08-26');
+insert into rental_book values (rno_seq.nextval, 3, 'user3', '2022-08-20', '2022-08-22', '2022-08-25');
+insert into rental_book values (rno_seq.nextval, 4, 'user4', '2022-08-22', '2022-08-27', '2022-08-26');
+insert into rental_book values (rno_seq.nextval, 5, 'user5', '2022-08-22', '2022-08-28', '2022-08-26');
+insert into rental_book values (rno_seq.nextval, 6, 'user6', '2022-08-22', '2022-08-27', '2022-08-26');
 insert into rental_book values (rno_seq.nextval, 7, 'user7', '2022-08-23', '', '2022-08-30');
 insert into rental_book values (rno_seq.nextval, 8, 'user8', '2022-08-23', '', '2022-08-30');
 insert into rental_book values (rno_seq.nextval, 9, 'user9', '2022-08-24', '', '2022-08-31');
-insert into rental_book values (rno_seq.nextval, 10, 'user10', '2022-08-25', '2020-08-29', '2022-09-01');
-insert into rental_book values (rno_seq.nextval, 7, 'user11', '2022-08-25', '2020-08-30', '2022-09-01');
-insert into rental_book values (rno_seq.nextval, 5, 'user12', '2022-08-26', '2020-08-31', '2022-09-02');
+insert into rental_book values (rno_seq.nextval, 10, 'user10', '2022-08-25', '2022-08-29', '2022-09-01');
+insert into rental_book values (rno_seq.nextval, 7, 'user11', '2022-08-25', '2022-08-30', '2022-09-01');
+insert into rental_book values (rno_seq.nextval, 5, 'user12', '2022-08-26', '2022-08-31', '2022-09-02');
 
 - 반납 예정일 추가 
 ALTER TABLE rental_book ADD due_date date;
