@@ -6,7 +6,7 @@ birth 생년월일
 email 이메일
 book_cnt 유저 책 대여 수 (최대 대여 수를 생각해서 칼럼 추가, 최대 대여는 5권 까지 생각했습니다.) 
 
-create table user (
+create table buser (
     id varchar2(30) primary key not null,
     pw varchar2(30) not null,
     name varchar(30) not null,
@@ -19,7 +19,15 @@ insert into buser values ('admin', 'admin', '관리자', '19900101', 'admin@nave
 insert into buser values ('user1', 'user1', '홍길동', '19910101', 'hong@naver.com', 0);
 insert into buser values ('user2', 'user2', '이순신', '19920101', 'leesun@naver.com', 0);
 insert into buser values ('user3', 'user3', '유관순', '19930101', 'yoogwan@naver.com', 0);
-
+insert into buser values ('user4', 'user4', '세종대왕', '19900108', 'seajong@naver.com', 0);
+insert into buser values ('user5', 'user5', '강호동', '19901001', 'kanghodong@naver.com', 0);
+insert into buser values ('user6', 'user6', '아이유', '19910225', 'iu@naver.com', 0);
+insert into buser values ('user7', 'user7', '이승기', '19920606', 'leesnggi@naver.com', 0);
+insert into buser values ('user8', 'user8', '이수근', '19930707', 'leesugun@naver.com', 0);
+insert into buser values ('user9', 'user9', '은지원', '19940808', 'eunjiwon@naver.com', 0);
+insert into buser values ('user10', 'user10', '나영석', '19990909', 'napd@naver.com', 0);
+insert into buser values ('user11', 'user11', '척춘경', '19901010', 'chuk@naver.com', 0);
+insert into buser values ('user12', 'user12', 'kimgu', '19911111', 'kimgu@naver.com', 0);
 
 책 정보 테이블
 bno 책 기본키
@@ -27,40 +35,32 @@ bname 책 이름
 author 저자
 publisher 출판사
 img 이미지 경로 및 이름 (별도의 img 패키지를 사용한다는 가정 하에 경로 입력 )
+b_coment 책 설명
+bcnt 책 등록 권 수
 
-create table book (
-    bno number primary key not null,
-    bname varchar2(255) not null,
-    author varchar(30) not null,
-    publisher varchar(50) not null,
-    img varchar2(255)
-);
-
-CREATE SEQUENCE bno_seq START WITH 1 INCREMENT BY 1 ; (스퀸스 생성)
-insert into book values (bno_seq.nextval, '코믹 메이플 스토리', '넥슨', '넥슨출판사', '');
-insert into book values (bno_seq.nextval, '금영석교수님의 코딩비법', '금영석', '에이콘출판사', '');
-insert into book values (bno_seq.nextval, '마님은 왜 돌쇠에게만 흰 쌀밥을 주었을까?', '에이콘', '에이콘출판사', '');
-
--- b_coment추가 (만약 처음 테이블 만들면 b_coment2의 명령어 복사 후 실행)
-alter table book add b_coment varchar2(255);
-update book set b_coment = '넥슨 메이플 스토리가 만화로 나왔다!?. 그들의 모험을 지켜보세요' where bname = '코믹 메이플 스토리';
-update book set b_coment = '코딩이 어렵다면 책과 함께 공부하세요' where bname = '금영석교수님의 코딩비법';
-update book set b_coment = '조선시대에 강시가 나타났다. 마님을 그걸 알고 돌쇠에게 밥을?' where bname = '마님은 왜 돌쇠에게만 흰 쌀밥을 주었을까?';
-
--- b_coment2추가 start
 create table book (
     bno number primary key not null,
     bname varchar2(255) not null,
     author varchar(30) not null,
     publisher varchar(50) not null,
     img varchar2(255),
-    b_coment varchar2(255)
+    b_coment varchar2(255),
+    bcnt number not null
 );
-CREATE SEQUENCE bno_seq START WITH 1 INCREMENT BY 1 ; (스퀸스 생성)
-insert into book values (bno_seq.nextval, '코믹 메이플 스토리', '넥슨', '넥슨출판사', '/img/comic_maple.png', '넥슨 메이플 스토리가 만화로 나왔다!?. 그들의 모험을 지켜보세요');
-insert into book values (bno_seq.nextval, '금영석교수님의 코딩비법', '금영석', '에이콘출판사', '/img/javabook.png','코딩이 어렵다면 책과 함께 공부하세요');
-insert into book values (bno_seq.nextval, '마님은 왜 돌쇠에게만 흰 쌀밥을 주었을까?', '에이콘', '에이콘출판사', '/img/rice.png', '조선시대에 강시가 나타났다. 마님을 그걸 알고 돌쇠에게 밥을?');
--- b_coment2추가 end
+
+insert into book values (1, '코믹 메이플 스토리', '넥슨', '넥슨출판사', '/img/comic_maple.png', '넥슨 메이플 스토리가 만화로 나왔다!?. 그들의 모험을 지켜보세요', 2);
+insert into book values (2, '금영석교수님의 코딩비법', '금영석', '에이콘출판사', '/img/javabook.png','코딩이 어렵다면 책과 함께 공부하세요', 3);
+insert into book values (3, '마님은 왜 돌쇠에게만 흰 쌀밥을 주었을까?', '에이콘', '에이콘출판사', '/img/rice.png', '조선시대에 강시가 나타났다. 마님을 그걸 알고 돌쇠에게 밥을?', 2);
+insert into book values (4, '이순신 위인전', '이수겸', '다산어린이', '/img/who_leesunsin.jpg', '오로지 나라와 백성을 생각했던 이순신의 활약상, 그의 행보를 알아봅시다.', 4);
+insert into book values (5, '사춘기와 성', '이복영', '예림당', '/img/who_sachungi.jpg', '우리가 어른이 될 때 무슨 변화가 일어날까? 알고 싶은 사람 여기 모여라!' ,5);
+insert into book values (6, '그리스 로마 신화', '토마스 불핀치', '아울북', '/img/greece.jpg', '아이들에게 이야기하는 형식으로 진행되는 그리스 로마 신화! 신들의 이야기에 함께 빠져보아요!' ,6 );
+insert into book values (7, '마법천자문', '김창환', '아울북', '/img/mabubchunjamun.jpg', '돌화산에 살아가던 손오공 보리도사의 한자 마법을 보고 매료되어 떠나는 그의 모험을 함께 지켜보세요!', 2);
+insert into book values (8, '신', '베르나르 베르베르', '열린책들', '/img/sin.jpg', '신 후보생의 자격으로 신의 학교에 들어간 주인공. 그가 만든 18호 지구 속 이야기 그리고 신이란 무엇일까', 3);
+insert into book values (9, '제3 인류', '베르나르 베르베르', '열린책들', '/img/3rd_people.jpg', '인류는 스스로를 구원할 수 있을까! 인류의 파멸을 막기위해 펼친 과학자들의 기상천외한 프로젝트 과연 종말로부터 벗어날 수 있을 것인가', 3);
+insert into book values (10, '무인도에서 살아남기', '최덕희', '미래엔아이세움', '/img/moonido.jpg', '극한 상황에서 살아남으려면 모든 과학적 지식과 상식을 동원해야 한다. 과연 이들은 무사히 무인도를 탈출할 수 있을까요?', 3);
+
+-- book테이블 시퀸스 삭제
+DROP SEQUENCE bno_seq;
 
 
 대출 이력 테이블
@@ -69,22 +69,34 @@ bno 책 테이블 기본키
 id  유저 아이디
 out_date 책 대출 일자
 in_date  책 반납 일자  (반납 일자가 없으면 대여 중인 도서)
+due_date 대출 반납 예정일
 
 create table rental_book (
     rno number primary key not null,
     bno number not null,
     id varchar2(30) not null,
     out_date date not null,
-    in_date date
+    in_date date,
+    due_date date not null
 );
 
 CREATE SEQUENCE rno_seq START WITH 1 INCREMENT BY 1 ; (스퀸스 생성)
-insert into rental_book values (rno_seq.nextval, 1, 'user1', '2022-08-19', '2022-08-21');
-insert into rental_book values (rno_seq.nextval, 1, 'user2', '2022-08-19', '');
-insert into rental_book values (rno_seq.nextval, 2, 'user2', '2022-08-19', '2022-08-23');
-insert into rental_book values (rno_seq.nextval, 3, 'user3', '2022-08-20', '2020-08-22');
+insert into rental_book values (rno_seq.nextval, 1, 'user1', '2022-08-19', '2022-08-21', '2022-08-22');
+insert into rental_book values (rno_seq.nextval, 1, 'user2', '2022-08-19', '', '2022-08-22');
+insert into rental_book values (rno_seq.nextval, 2, 'user2', '2022-08-19', '2022-08-23', '2022-08-24');
+insert into rental_book values (rno_seq.nextval, 3, 'user3', '2022-08-20', '2020-08-22', '2022-08-25');
+insert into rental_book values (rno_seq.nextval, 4, 'user4', '2022-08-22', '2020-08-27', '2022-08-26');
+insert into rental_book values (rno_seq.nextval, 5, 'user5', '2022-08-22', '2020-08-28', '2022-08-26');
+insert into rental_book values (rno_seq.nextval, 6, 'user6', '2022-08-22', '2020-08-27', '2022-08-26');
+insert into rental_book values (rno_seq.nextval, 7, 'user7', '2022-08-23', '', '2022-08-30');
+insert into rental_book values (rno_seq.nextval, 8, 'user8', '2022-08-23', '', '2022-08-30');
+insert into rental_book values (rno_seq.nextval, 9, 'user9', '2022-08-24', '', '2022-08-31');
+insert into rental_book values (rno_seq.nextval, 10, 'user10', '2022-08-25', '2020-08-29', '2022-09-01');
+insert into rental_book values (rno_seq.nextval, 7, 'user11', '2022-08-25', '2020-08-30', '2022-09-01');
+insert into rental_book values (rno_seq.nextval, 5, 'user12', '2022-08-26', '2020-08-31', '2022-09-02');
 
-
+- 반납 예정일 추가 
+ALTER TABLE rental_book ADD due_date date;
 
 4차 case when문
 select b.bname, b.author, b.publisher, b.img, b.b_coment, u.id, u.name, u.email
@@ -97,41 +109,11 @@ join buser u
 on r.id = u.id
 ;
 
-
-
-============= 추가 데이터 입력 =============
-book
-insert into book values (bno_seq.nextval, '이순신 위인전', '이수겸', '다산어린이', '/img/leesunsin.jsp', '오로지 나라와 백성을 생각했던 이순신의 활약상, 그의 행보를 알아봅시다.');
-insert into book values (bno_seq.nextval, '사춘기와 성', '이복영', '예림당', '/img/who_sachungi.jsp', '우리가 어른이 될 때 무슨 변화가 일어날까? 알고 싶은 사람 여기 모여라!'  );
-insert into book values (bno_seq.nextval, '그리스 로마 신화', '토마스 불핀치', '아울북', '/img/greece.jsp', '아이들에게 이야기하는 형식으로 진행되는 그리스 로마 신화! 신들의 이야기에 함께 빠져보아요!'  );
-insert into book values (bno_seq.nextval, '마법천자문', '김창환', '아울북', '/img/mabubchunjamun.jsp', '돌화산에 살아가던 손오공 보리도사의 한자 마법을 보고 매료되어 떠나는 그의 모험을 함께 지켜보세요!');
-insert into book values (bno_seq.nextval, '신', '베르나르 베르베르', '열린책들', '/img/sin.jsp', '신 후보생의 자격으로 신의 학교에 들어간 주인공. 그가 만든 18호 지구 속 이야기 그리고 신이란 무엇일까');
-insert into book values (bno_seq.nextval, '제3 인류', '베르나르 베르베르', '열린책들', '/img/3rd_people.jpg', '인류는 스스로를 구원할 수 있을까! 인류의 파멸을 막기위해 펼친 과학자들의 기상천외한 프로젝트 과연 종말로부터 벗어날 수 있을 것인가');
-insert into book values (bno_seq.nextval, '무인도에서 살아남기', '최덕희', '미래엔아이세움', '/img/moonido.jsp', '극한 상황에서 살아남으려면 모든 과학적 지식과 상식을 동원해야 한다. 과연 이들은 무사히 무인도를 탈출할 수 있을까요?');
-
-buser
-insert into buser values ('user4', 'user4', '세종대왕', '19900108', 'seajong@naver.com', 0);
-insert into buser values ('user5', 'user5', '강호동', '19901001', 'kanghodong@naver.com', 0);
-insert into buser values ('user6', 'user6', '아이유', '19910225', 'iu@naver.com', 0);
-insert into buser values ('user7', 'user7', '이승기', '19920606', 'leesnggi@naver.com', 0);
-insert into buser values ('user8', 'user8', '이수근', '19930707', 'leesugun@naver.com', 0);
-insert into buser values ('user9', 'user9', '은지원', '19940808', 'eunjiwon@naver.com', 0);
-insert into buser values ('user10', 'user10', '나영석', '19990909', 'napd@naver.com', 0);
-insert into buser values ('user11', 'user11', '척춘경', '19901010', 'chuk@naver.com', 0);
-insert into buser values ('user12', 'user12', 'kimgu', '19911111', 'kimgu@naver.com', 0);
-
-rental_book
-insert into rental_book values (rno_seq.nextval, 4, 'user4', '2022-08-22', '2020-08-27');
-insert into rental_book values (rno_seq.nextval, 5, 'user5', '2022-08-22', '2020-08-28');
-insert into rental_book values (rno_seq.nextval, 6, 'user6', '2022-08-22', '2020-08-27');
-insert into rental_book values (rno_seq.nextval, 7, 'user7', '2022-08-23', '');
-insert into rental_book values (rno_seq.nextval, 8, 'user8', '2022-08-23', '2020-08-30');
-insert into rental_book values (rno_seq.nextval, 9, 'user9', '2022-08-24', '');
-insert into rental_book values (rno_seq.nextval, 10, 'user10', '2022-08-25', '2020-08-29');
-insert into rental_book values (rno_seq.nextval, 7, 'user11', '2022-08-25', '2020-08-30');
-insert into rental_book values (rno_seq.nextval, 5, 'user12', '2022-08-26', '2020-08-31');
-============= 추가 데이터 입력 =============
-
+삭제
+DROP TABLE buser;
+DROP TABLE book;
+DROP TABLE rental_book;
+DROP SEQUENCE rno_seq;
 
 ##############################################
 2022-08-19 1차 DB칼럼 생성 이후 수정 사항 발생하면 아래에 기입 예정
@@ -139,6 +121,9 @@ insert into rental_book values (rno_seq.nextval, 5, 'user12', '2022-08-26', '202
 2022-08-22 3차 book 테이블에 create 하는 경우 명령어 추가(테이블 생성) - 검색어 : b_coment2추가 start 
 2022-08-23 4차 book, buser, rental_book테이블 join문 및 case when문 반납 미반납 출력 쿼리 추가 - 검색어 : 4차 case when문 
 2022-08-24 5차 book, buser, rental_book 테이블 나중에 추가할 insert 쿼리 추가 - 검색어 : 추가 데이터 입력 
+2022-08-25 6차 book 테이블 시퀸스 삭제 bcnt(책 권수)추가 - 검색어 : 시퀸스 삭제, bcnt추가
+, rental_book 반납 예정일 추가 - 테이블 create문 수정 및 insert문 수정
+, 각종 중복 쿼리들 삭제 및 위치 옮김 테이블은 삭제 후 다시 만들고 insert하는게 깔끔할꺼 같아서 drop문도 추가 
 
-최종 수정 날짜 2022-08-24
+최종 수정 날짜 2022-08-25
 
