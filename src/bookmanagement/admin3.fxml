@@ -7,7 +7,8 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookmanagement.AdminController">
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookmanagement.AdminController">
    <children>
       <Label layoutX="32.0" layoutY="30.0" prefHeight="29.0" prefWidth="60.0" />
       <Label layoutX="104.0" layoutY="30.0" prefHeight="29.0" prefWidth="118.0" text="님 환영합니다" />
