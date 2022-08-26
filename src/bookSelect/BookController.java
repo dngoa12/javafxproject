@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,7 +36,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 
-public class BookDB implements Initializable {
+public class BookController implements Initializable {
 
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -64,6 +65,12 @@ public class BookDB implements Initializable {
 	@FXML
 	private TableColumn<BookSub, String> table_Coment;
 	@FXML
+	private TableColumn<BookSub, String> table_State;
+	@FXML
+	private TableColumn<BookSub, String> table_img1;
+	@FXML
+	private TableColumn<BookSub, String> table_img2;
+	@FXML
     private TextField bookAuthor;
     @FXML
     private TextField bookComent;
@@ -75,14 +82,33 @@ public class BookDB implements Initializable {
     private TextField bookTitle;
     @FXML
     private TextField bookState;
-	
+   
 	//테이블 뷰를 이용하기위한 배열 생성
 	ObservableList<BookSub> list = FXCollections.observableArrayList();
 	 Image img = null;
 	int cnt = 0;
 	
+	
+    public void selecttableView(MouseEvent event) {
+    	BookSub b = tableView.getSelectionModel().getSelectedItem();
+    	String strNo = String.valueOf(b.getBno());
+    	bookNo.setText(strNo);
+    	bookTitle.setText(b.getBname());
+    	bookPublisher.setText(b.getPublisher());
+    	bookAuthor.setText(b.getAuthor());
+    	bookState.setText(b.getB_state());
+    	img = new Image(getClass().getResourceAsStream(b.getImg1()));
+		bookImage.setImage(img);
+		img = new Image(getClass().getResourceAsStream(b.getImg2()));
+		bookImage2.setImage(img);
+    }
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+	}
+	
 	public void close() {
-		System.exit(0);
+		close();
 	}
 	//전체 검색 버튼 누를시 이벤트
 	//db에 저장된 내용이 한번에 출력 버튼을 계속 누르면 기존에 있는 내용을 초기화 후 출력
@@ -92,6 +118,9 @@ public class BookDB implements Initializable {
 	    String author;
 	    String publisher;
 	    String b_coment;
+	    String b_state;
+	    String b_img1;
+	    String b_img2;
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, user, password);
@@ -106,6 +135,9 @@ public class BookDB implements Initializable {
 			table_Author.setCellValueFactory(new PropertyValueFactory<BookSub, String>("author"));
 			table_Publisher.setCellValueFactory(new PropertyValueFactory<BookSub, String>("publisher"));
 			table_Coment.setCellValueFactory(new PropertyValueFactory<BookSub, String>("b_coment"));
+			table_State.setCellValueFactory(new PropertyValueFactory<BookSub, String>("b_state"));
+			table_img1.setCellValueFactory(new PropertyValueFactory<BookSub, String>("img1"));
+			table_img2.setCellValueFactory(new PropertyValueFactory<BookSub, String>("img2"));
 			
 			if (cnt == 0) {
 				while (rs.next()) {
@@ -114,8 +146,10 @@ public class BookDB implements Initializable {
 					author = rs.getString("author");
 					publisher = rs.getString("publisher");
 					b_coment = rs.getString("b_coment");
-
-					list.add(new BookSub(bno,bname,author,publisher,b_coment));
+					b_state = rs.getString("state");
+					b_img1 = rs.getString("img");
+					b_img2 = rs.getString("img2");
+					list.add(new BookSub(bno,bname,author,publisher,b_coment,b_state,b_img1,b_img2));
 				}
 
 				tableView.setItems(list);
@@ -130,8 +164,10 @@ public class BookDB implements Initializable {
 					author = rs.getString("author");
 					publisher = rs.getString("publisher");
 					b_coment = rs.getString("b_coment");
-
-					list.add(new BookSub(bno,bname,author,publisher,b_coment));
+					b_state = rs.getString("state");
+					b_img1 = rs.getString("img");
+					b_img2 = rs.getString("img2");
+					list.add(new BookSub(bno,bname,author,publisher,b_coment,b_state,b_img1,b_img2));
 				}
 				tableView.setItems(list);
 			}
@@ -142,6 +178,7 @@ public class BookDB implements Initializable {
 	}
 	//기본검색기능
 	public void clickSelect() {
+		
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, user, password);
@@ -173,11 +210,6 @@ public class BookDB implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-	}
-	
 	public void clickrent(ActionEvent event) {
 		Parent root;
 		Stage stage = new Stage();
@@ -191,6 +223,4 @@ public class BookDB implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }

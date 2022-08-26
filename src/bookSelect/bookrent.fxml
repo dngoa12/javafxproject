@@ -8,11 +8,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="551.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="551.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookSelect.RentController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="78.0" layoutX="149.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="258.0" />
-      <Label layoutX="226.0" layoutY="39.0" text="도서 대여">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="78.0" layoutX="149.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" width="258.0" />
+      <Label layoutX="226.0" layoutY="49.0" text="도서 대여">
          <font>
             <Font size="23.0" />
          </font>
@@ -22,7 +21,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="152.0" layoutY="175.0" prefHeight="32.0" prefWidth="85.0" text="아이디">
+      <Label layoutX="152.0" layoutY="176.0" prefHeight="32.0" prefWidth="85.0" text="책 제목">
          <font>
             <Font size="22.0" />
          </font>
@@ -38,15 +37,10 @@
          </font>
       </Label>
       <TextField fx:id="rent_No" layoutX="238.0" layoutY="148.0" />
-      <TextField fx:id="rent_Id" layoutX="238.0" layoutY="182.0" />
+      <TextField fx:id="rent_Title" layoutX="238.0" layoutY="182.0" />
       <TextField fx:id="rent_date" layoutX="238.0" layoutY="221.0" />
       <TextField fx:id="return_date" layoutX="238.0" layoutY="261.0" />
-      <Button fx:id="rent_btn" layoutX="158.0" layoutY="324.0" mnemonicParsing="false" text="대여">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="cancle_btn" layoutX="287.0" layoutY="324.0" mnemonicParsing="false" text="취소">
+      <Button fx:id="rent_btn" layoutX="231.0" layoutY="327.0" mnemonicParsing="false" onAction="#rentbtn" text="대여">
          <font>
             <Font size="24.0" />
          </font>
