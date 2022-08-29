@@ -57,7 +57,7 @@ public class LoginController extends InitController implements Initializable{
 
 	public void userJoinProc() {
 		Stage s = new Stage();
-		cs.showWindow(s, "../program/userJoin.fxml", id5);
+		cs.showWindow(s, "../login/joinUser.fxml", id5);
 	}
 
 	public void exitProc(ActionEvent event) {

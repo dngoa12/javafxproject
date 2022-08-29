@@ -48,6 +48,7 @@ public class LoginAdminController extends InitController implements Initializabl
 		String id = userLoginId.getText();
 		String pw = userLoginPw.getText();
 		
+		
 		if (dao.checkAdminLogin(id, pw)) {
 			cs.errorBox("로그인", "성공", "로그인 성공");
 			Stage s = (Stage) root.getScene().getWindow();
@@ -59,7 +60,7 @@ public class LoginAdminController extends InitController implements Initializabl
 
 	public void adminJoinProc() {
 		Stage s = new Stage();
-		cs.showWindow(s, "../login/adminJoin.fxml", id5);
+		cs.showWindow(s, "../login/joinAdmin.fxml", id5);
 	}
 
 	public void exitProc(ActionEvent event) {

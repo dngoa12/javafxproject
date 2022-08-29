@@ -10,10 +10,9 @@ import login.User;
 
 public interface DAO {
 
-	public boolean insertUser(User u);
+	public boolean insertUser(User u, int level);
 	public boolean checkLogin(String id, String pw);
 	
-	public boolean insertAdmin(Admin a);
 	public boolean checkAdminLogin(String id, String pw);
 	
 	public boolean insertBook(Book b);
@@ -29,4 +28,6 @@ public interface DAO {
 	public boolean insertRental(int bno, String id5);
 	
 	public List<Rental> myRental(String id5);
+	
+	public boolean idOk(String id);// 회원목록 회원가입의 DB에서 아이디 중복확인 메서드
 }

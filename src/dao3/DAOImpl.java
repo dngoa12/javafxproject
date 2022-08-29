@@ -33,15 +33,16 @@ public class DAOImpl implements DAO{
 	}
 
 	@Override
-	public boolean insertUser(User u) {
+	public boolean insertUser(User u, int level) {
 		try {
-			String sql = "insert into buser values(?,?,?,?,?,0)";
+			String sql = "insert into buser values(?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, u.getName());
-			ps.setString(2, u.getId());
-			ps.setString(3, u.getPw());
-			ps.setString(4, u.getEmail());
-			ps.setString(5, u.getBirth());
+			ps.setString(1, u.getId());
+			ps.setString(2, u.getPw());
+			ps.setString(3, u.getName());
+			ps.setString(4, u.getBirth());
+			ps.setString(5, u.getEmail());
+			ps.setInt(6, level);
 			
 			int res = ps.executeUpdate();
 			
@@ -78,32 +79,9 @@ public class DAOImpl implements DAO{
 	}
 
 	@Override
-	public boolean insertAdmin(Admin a) {
-		try {
-			String sql = "insert into buser values(?,?,?)";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, a.getName());
-			ps.setString(2, a.getId());
-			ps.setString(3, a.getPw());
-			
-			
-			int res = ps.executeUpdate();
-			
-			if (res>=1) {
-				return true;
-			}
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	@Override
 	public boolean checkAdminLogin(String id, String pw) {
 		try {
-			String sql = "select count(*) from buser where id=? and pw=?";
+			String sql = "select count(*) from buser where id=? and pw=? and ulevel = 1";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
@@ -116,7 +94,8 @@ public class DAOImpl implements DAO{
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
+//			e.printStackTrace();
 		}
 		return false;
 	}
@@ -341,6 +320,29 @@ public class DAOImpl implements DAO{
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	@Override
+	public boolean idOk(String id) {	//관리자,사용자 회원가입시 id 중복체크
+		// TODO Auto-generated method stub
+
+		try {
+			String sql = "select count(*) from buser where id=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+
+			ResultSet rs = ps.executeQuery();
+
+			rs.next();
+			int result = rs.getInt(1);
+			if(result == 1) {
+				return true;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
