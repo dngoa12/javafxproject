@@ -30,4 +30,6 @@ public interface DAO {
 	public List<Rental> myRental(String id5);
 	
 	public boolean idOk(String id);// 회원목록 회원가입의 DB에서 아이디 중복확인 메서드
+	
+	public boolean modifyBannap(int rno, String id5);
 }

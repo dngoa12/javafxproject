@@ -7,6 +7,13 @@ public class Rental {
 	private int rno;
 	private int bno;
 	private String id;
+	private String yn;
+	public String getYn() {
+		return yn;
+	}
+	public void setYn(String yn) {
+		this.yn = yn;
+	}
 	public String getId() {
 		return id;
 	}

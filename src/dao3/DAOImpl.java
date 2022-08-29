@@ -297,8 +297,10 @@ public class DAOImpl implements DAO{
 	@Override
 	public List<Rental> myRental(String id5) {
 		List<Rental> list = new ArrayList<Rental>();
+		
+		
 		try {
-			String sql = "select * from rental_book where id=?";
+			String sql = "select rno, bno, id, out_date, in_date, due_date, case when in_date is null then '미반납' else '반납' end from rental_book where id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, id5);
 			
@@ -309,8 +311,9 @@ public class DAOImpl implements DAO{
 				r.setBno(rs.getInt(2));
 				r.setId(id5);
 				r.setOut_date(rs.getDate(4));
-				r.setDue_date(rs.getDate(5));
-				r.setIn_date(rs.getDate(6));
+				r.setIn_date(rs.getDate(5));
+				r.setDue_date(rs.getDate(6));
+				r.setYn(rs.getString(7));
 				
 				list.add(r);
 				
@@ -341,6 +344,26 @@ public class DAOImpl implements DAO{
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean modifyBannap(int rno, String id5) {
+		try {
+			String sql = "update rental_book set in_date=sysdate where rno=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, rno);
+			
+			int res = ps.executeUpdate();
+			
+			if (res>=1) {
+				return true;
+			}
+			
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;

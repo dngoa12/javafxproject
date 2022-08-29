@@ -180,4 +180,8 @@ public class MainController extends InitController implements Initializable{
 		tableView.setItems(list);
 	}
 	
+	public void goMy() {
+		Stage s = (Stage) root.getScene().getWindow();
+		cs.showWindow(s, "../login/myPage.fxml", userid);
+	}
 }

@@ -8,18 +8,19 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.MyPageController">
    <children>
-      <TableView fx:id="myPageList" layoutX="46.0" layoutY="131.0" prefHeight="241.0" prefWidth="455.0">
+      <TableView fx:id="myPageList" layoutX="46.0" layoutY="131.0" prefHeight="241.0" prefWidth="523.0">
         <columns>
-          <TableColumn fx:id="myTitle" prefWidth="75.0" text="책제목" />
+          <TableColumn fx:id="myRno" prefWidth="75.0" text="대여번호" />
           <TableColumn fx:id="myBno" prefWidth="75.0" text="도서번호" />
             <TableColumn fx:id="myOut_date" prefWidth="100.0" text="대출일" />
-            <TableColumn fx:id="myDue_date" prefWidth="101.33331298828125" text="반납예정일" />
-            <TableColumn fx:id="myIn_date" prefWidth="101.33331298828125" text="반납일자" />
+            <TableColumn fx:id="myIn_date" prefWidth="101.33331298828125" text="반납일" />
+            <TableColumn fx:id="myDue_date" prefWidth="101.3333740234375" text="반납예정일" />
+            <TableColumn fx:id="myYn" prefWidth="68.00002034505212" text="반납여부" />
         </columns>
       </TableView>
       <Button layoutX="46.0" layoutY="95.0" mnemonicParsing="false" onAction="#myRentalSearchProc" text="나의 대출목록 조회" />
-      <Button layoutX="461.0" layoutY="95.0" mnemonicParsing="false" text="반납" />
+      <Button fx:id="bannap" layoutX="529.0" layoutY="95.0" mnemonicParsing="false" text="반납" />
       <Label layoutX="46.0" layoutY="23.0" text="회원님 환영합니다." />
-      <Button layoutX="525.0" layoutY="346.0" mnemonicParsing="false" onAction="#goUserMain" text="메인페이지로" />
+      <Button layoutX="481.0" layoutY="19.0" mnemonicParsing="false" onAction="#goUserMain" text="메인페이지로" />
    </children>
 </AnchorPane>
