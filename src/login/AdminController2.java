@@ -68,11 +68,12 @@ public class AdminController2 extends InitController implements Initializable{
 		TextField tfAuthor = (TextField) root.lookup("#author");
 		TextField tfPublisher = (TextField) root.lookup("#publisher");
 		TextField tfBook_count = (TextField) root.lookup("#bcnt");
+		TextField tfb_coment = (TextField) root.lookup("#b_coment");
 
 		String[] txtEmpty = {tfTitle.getText(), tfBook_num.getText(), tfAuthor.getText(),
-				tfPublisher.getText(), tfBook_count.getText()};
+				tfPublisher.getText(), tfBook_count.getText(), tfb_coment.getText()};
 
-		String[] txtEmptyName = {"제목", "도서번호", "작가", "출판사", "분야", "카테고리", "출판년도", "재고"};
+		String[] txtEmptyName = {"제목", "도서번호", "작가", "출판사", "재고", "설명"};
 
 		for (int i=0;i<txtEmpty.length;i++) {
 			if (cs.isEmpty(txtEmpty[i])) {
@@ -86,6 +87,8 @@ public class AdminController2 extends InitController implements Initializable{
 		b.setAuthor(tfAuthor.getText());
 		b.setPublisher(tfPublisher.getText());
 		b.setBcnt(Integer.parseInt(tfBook_count.getText()));
+		b.setB_coment(tfb_coment.getText());
+		System.out.println(b.getB_coment());
 
 		if (dao.insertBook(b)) {
 			cs.errorBox("등록", "성공", "도서등록이 정상적으로 이루어짐");
@@ -94,6 +97,7 @@ public class AdminController2 extends InitController implements Initializable{
 			tfAuthor.clear();
 			tfPublisher.clear();
 			tfBook_count.clear();
+			tfb_coment.clear();
 			tfTitle.requestFocus();
 		} else {
 			cs.errorBox("등록", "실패", "db입력중 문제 발생");

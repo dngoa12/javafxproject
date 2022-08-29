@@ -23,12 +23,12 @@
       <TextField fx:id="author" layoutX="330.0" layoutY="166.0" promptText="작가 :" />
       <TextField fx:id="publisher" layoutX="330.0" layoutY="229.0" promptText="출판사 :" />
       <TextField fx:id="bcnt" layoutX="330.0" layoutY="297.0" promptText="재고 :" />
+      <TextField fx:id="b_coment" layoutX="86.0" layoutY="297.0" promptText="설명 : " />
       <Label layoutX="37.0" layoutY="170.0" text="책제목" />
       <Label layoutX="31.0" layoutY="233.0" text="도서번호" />
       <Label layoutX="287.0" layoutY="170.0" text="작가" />
       <Label layoutX="281.0" layoutY="233.0" text="출판사" />
       <Label layoutX="286.0" layoutY="301.0" text="재고" />
       <Label layoutX="41.0" layoutY="301.0" text="설명" />
-      <TextField layoutX="86.0" layoutY="297.0" promptText="설명 : " />
    </children>
 </AnchorPane>

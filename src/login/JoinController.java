@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import dao3.DAO;
 import dao3.DAOImpl;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 
@@ -24,7 +25,7 @@ public class JoinController extends InitController implements Initializable{
 	private CommonService cs;
 	private JoinService js;
 	private DAO dao;
-	
+	@FXML TextField chkId;
 	
 	
 	
@@ -53,8 +54,19 @@ public class JoinController extends InitController implements Initializable{
 	
 	public void OpenIdCheckForm() { // 회원가입 아이디 중복확인 창 열림
 		
-		Stage s = new Stage();
-		cs.showWindow(s, "../login/IdCheck.fxml","");
+//		Stage s = new Stage();
+//		cs.showWindow(s, "../login/IdCheck.fxml","");
+		chkId = (TextField) root.lookup("#userId");
+		String id = chkId.getText();
+		if(id.equals("") || id.equals(null)) {
+			cs.errorBox("아이디중복확인", "사용 불가능","다른 아이디를 사용해주세요");
+		} else if (dao.idOk(id)) {
+			cs.errorBox("아이디중복확인", "사용 불가능","다른 아이디를 사용해주세요");
+			chkId.clear();
+			chkId.focusedProperty();
+		} else {
+			cs.errorBox("아이디중복확인", "사용 가능","사용가능한 아이디입니다");
+		}
 		
 	}	
 	
@@ -65,7 +77,7 @@ public class JoinController extends InitController implements Initializable{
 		String id = idDouble.getText();
 
 		if (cs.isEmpty(idDouble.getText())) {
-			cs.errorBox("오류", "오류발견", idDouble.getText()+"창이 비었음");
+			cs.errorBox("오류", "오류발견", idDouble.getText()+"창이 비어있습니다.");
 			return;
 		}
 
@@ -99,7 +111,7 @@ public class JoinController extends InitController implements Initializable{
 
 		for (int i=0;i<txtEmpty.length;i++) {
 			if (cs.isEmpty(txtEmpty[i])) {
-				cs.errorBox("오류", "오류발견", txtEmptyName[i]+" 입력창이 비었음");
+				cs.errorBox("오류", "오류발견", txtEmptyName[i]+" 입력창이 비어있습니다.");
 				return;
 			}
 		}
@@ -111,7 +123,7 @@ public class JoinController extends InitController implements Initializable{
 		System.out.println("pwok="+pwOk);
 
 		if (!js.comparePw(pw, pwOk)) {
-			cs.errorBox("오류", "오류발생", "암호가 다름");
+			cs.errorBox("오류", "오류발생", "암호가 다릅니다.");
 			return;
 		}
 
@@ -122,9 +134,9 @@ public class JoinController extends InitController implements Initializable{
 		u.setEmail(tfEmail.getText());
 
 		if (dao.insertUser(u, 0)) {
-			cs.errorBox("회원가입", "성공", "정상적으로 이뤄짐");
+			cs.errorBox("회원가입", "성공", "정상적으로 처리되었습니다.");
 		} else {
-			cs.errorBox("회원가입", "db문제발생", "db입력중 문제발생");
+			cs.errorBox("회원가입", "db문제발생", "db입력중 문제가 발생했습니다.");
 			return;
 		}
 
@@ -147,7 +159,7 @@ public class JoinController extends InitController implements Initializable{
 
 		for (int i=0;i<txtEmpty.length;i++) {
 			if (cs.isEmpty(txtEmpty[i])) {
-				cs.errorBox("오류", "오류발견", txtEmptyName[i]+" 입력창이 비었음");
+				cs.errorBox("오류", "오류발견", txtEmptyName[i]+" 입력창이 비있습니다.");
 				return;
 			}
 		}
@@ -156,7 +168,7 @@ public class JoinController extends InitController implements Initializable{
 		String pwOk = pfPwOk.getText();
 
 		if (!js.comparePw(pw, pwOk)) {
-			cs.errorBox("오류", "오류발생", "암호가 다름");
+			cs.errorBox("오류", "오류발생", "암호가 다릅니다.");
 			return;
 		}
 
@@ -169,9 +181,9 @@ public class JoinController extends InitController implements Initializable{
 
 
 		if (dao.insertUser(u, 1)) {
-			cs.errorBox("회원가입", "성공", "정상적으로 이뤄짐");
+			cs.errorBox("회원가입", "성공", "정상적으로 처리되었습니다.");
 		} else {
-			cs.errorBox("회원가입", "db문제발생", "db입력중 문제발생");
+			cs.errorBox("회원가입", "db문제발생", "db입력중 문제가 발생했습니다.");
 			return;
 		}
 

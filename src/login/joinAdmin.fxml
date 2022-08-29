@@ -51,7 +51,7 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.JoinController">
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="id" prefHeight="29.0" prefWidth="166.0" promptText="중복확인 눌러주세요" GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <TextField fx:id="userId" prefHeight="29.0" prefWidth="166.0" promptText="중복확인 눌러주세요" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <font>
             <Font size="14.0" />
          </font>

@@ -40,8 +40,8 @@ public class DAOImpl implements DAO{
 			ps.setString(1, u.getId());
 			ps.setString(2, u.getPw());
 			ps.setString(3, u.getName());
-			ps.setString(4, u.getBirth());
-			ps.setString(5, u.getEmail());
+			ps.setString(4, u.getEmail());
+			ps.setString(5, u.getBirth());
 			ps.setInt(6, level);
 			
 			int res = ps.executeUpdate();
@@ -127,14 +127,15 @@ public class DAOImpl implements DAO{
 	@Override
 	public boolean insertBook(Book b) {
 		try {
-			String sql = "insert into book values(?, ?, ?, ?, ?, '', ?)";
+			String sql = "insert into book values(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, b.getBno());
 			ps.setString(2, b.getTitle());
 			ps.setString(3, b.getAuthor());
 			ps.setString(4, b.getPublisher());
-			ps.setString(5, b.getB_coment());//코맨트
-			ps.setInt(6, b.getBcnt());
+			ps.setString(5, "");
+			ps.setString(6, b.getB_coment());//코맨트
+			ps.setInt(7, b.getBcnt());
 			
 			int res = ps.executeUpdate();
 			
