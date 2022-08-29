@@ -65,13 +65,14 @@ public class MainDAOImpl implements MainDAO {
 	    String author;
 	    String publisher;
 	    String b_coment;
+	    String img;
 	    //테이블 뷰를 이용하기위한 배열 생성
 		ObservableList<BookSub> list = FXCollections.observableArrayList();
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, user, password);
 			System.out.println("전체 검색 쿼리");
-			sql = "select * from book";
+			sql = "select bno, bname, author, publisher, b_coment, nvl(img , '/img/no_image.png') as img from book";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -80,7 +81,8 @@ public class MainDAOImpl implements MainDAO {
 				author = rs.getString("author");
 				publisher = rs.getString("publisher");
 				b_coment = rs.getString("b_coment");
-				list.add(new BookSub(bno,bname,author,publisher,b_coment));
+				img = rs.getString("img");
+				list.add(new BookSub(bno,bname,author,publisher,b_coment, img));
 			}
 			
 			//cnt를 통해 다시 클릭시 기존에 있는 내용을 지우고 내용을 다시 받고 출력

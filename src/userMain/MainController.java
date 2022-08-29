@@ -35,11 +35,12 @@ public class MainController extends InitController implements Initializable{
 	private CommonService cs;
 	@FXML ImageView img1, img2, img3, img4, bookImage, bookImage2;
 	@FXML VBox vbox1, vbox2, vbox3, vbox4;
-	@FXML Label txtid1, txtid2, txtid3, txtid4, hideid1, hideid2, hideid3, hideid4;
+	//			책 이름
+	@FXML Label txtid1, txtid2, txtid3, hideid1, hideid2, hideid3, hidesrc;
 	@FXML private TextField txtmsg;
 	@FXML private TableView<BookSub> tableView;
 	@FXML private TableColumn<BookSub, Integer> table_No;
-	@FXML private TableColumn<BookSub, String> table_Title, table_Author, table_Publisher, table_Coment;
+	@FXML private TableColumn<BookSub, String> table_Title, table_Author, table_Publisher, table_Coment, table_Img;
 	@FXML private TextField bookAuthor, bookComent, bookNo, bookPublisher, bookTitle, bookState;
 	Alert alert;
 	ObservableList<BookSub> list = FXCollections.observableArrayList();
@@ -75,8 +76,8 @@ public class MainController extends InitController implements Initializable{
 				bookTitle.setText(tableView.getSelectionModel().getSelectedItem().getBname());
 				bookAuthor.setText(tableView.getSelectionModel().getSelectedItem().getAuthor());
 				bookPublisher.setText(tableView.getSelectionModel().getSelectedItem().getPublisher());
-//				bookImage.setImage(tableView.getSelectionModel().getSelectedItem().get);
-//				bookImage2.setImage(tableView.getSelectionModel().getSelectedItem().getBno().toString());
+				bookImage.setImage(new Image(tableView.getSelectionModel().getSelectedItem().getImg()));
+				bookImage2.setImage(new Image(tableView.getSelectionModel().getSelectedItem().getImg()));
 				
 			}
 		});
@@ -127,8 +128,9 @@ public class MainController extends InitController implements Initializable{
 		String author = bookAuthor.getText();
 		String publisher = bookPublisher.getText();
 		String b_coment = "";
+		String img = "";
 		
-		rlist.add(new BookSub(bno,bname,author,publisher,b_coment));
+		rlist.add(new BookSub(bno,bname,author,publisher,b_coment, img));
 		if(ms.clickrent(rlist, userid)>0) {
 			alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("대여 성공");
@@ -174,6 +176,7 @@ public class MainController extends InitController implements Initializable{
 		table_Author.setCellValueFactory(new PropertyValueFactory<BookSub, String>("author"));
 		table_Publisher.setCellValueFactory(new PropertyValueFactory<BookSub, String>("publisher"));
 		table_Coment.setCellValueFactory(new PropertyValueFactory<BookSub, String>("b_coment"));
+		table_Img.setCellValueFactory(new PropertyValueFactory<BookSub, String>("img")); // 이미지 숨김
 		tableView.setItems(list);
 	}
 	

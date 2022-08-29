@@ -6,14 +6,16 @@ public class BookSub {
     String author;
     String publisher;
     String b_coment;
+    String img;
 
-	public BookSub(Integer bno, String bname, String author, String publisher, String b_coment) {
+	public BookSub(Integer bno, String bname, String author, String publisher, String b_coment, String img) {
 		
 		this.bno = bno;
 		this.bname = bname;
 		this.author = author;
 		this.publisher = publisher;
 		this.b_coment = b_coment;
+		this.img = img;
 	}
 
 	public Integer getBno() {
@@ -54,6 +56,14 @@ public class BookSub {
 
 	public void setB_coment(String b_coment) {
 		this.b_coment = b_coment;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 	

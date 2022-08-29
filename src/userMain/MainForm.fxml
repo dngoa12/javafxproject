@@ -79,6 +79,7 @@
             <TableColumn fx:id="table_Author" prefWidth="61.5999755859375" text="저자" />
             <TableColumn fx:id="table_Publisher" prefWidth="76.79998779296875" text="출판사" />
             <TableColumn fx:id="table_Coment" prefWidth="207.9998779296875" text="설명" />
+            <TableColumn fx:id="table_Img" prefWidth="207.9998779296875" text="이미지"  visible="false"/>
         </columns>
       </TableView>
       <Button fx:id="bookAll" layoutX="382.0" layoutY="221.0" mnemonicParsing="false" onAction="#clickSelectAll" prefHeight="44.0" prefWidth="203.0" text="전체 도서 목록 보기" />
@@ -166,5 +167,6 @@
             </VBox>
          </children>
       </HBox>
+      <Label fx:id="hidesrc" layoutX="37.0" layoutY="236.0" text="hidesrc" visible="false" />
    </children>
 </AnchorPane>
