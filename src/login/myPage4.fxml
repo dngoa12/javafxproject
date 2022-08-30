@@ -48,7 +48,7 @@
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <Button layoutX="300.0" layoutY="192.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="29.0" prefWidth="67.0" text="탈     퇴">
+      <Button layoutX="300.0" layoutY="192.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="29.0" prefWidth="67.0" text="탈   퇴">
          <font>
             <Font size="14.0" />
          </font></Button>
