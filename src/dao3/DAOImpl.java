@@ -243,56 +243,9 @@ public class DAOImpl implements DAO{
 		return null;
 	}
 
-	@Override
-	public List<Book> searchBook(String title) {
-		List<Book> list = new ArrayList<Book>();
-		try {
-			String sql = "select * from book where bname = ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, title);
-			
-			ResultSet rs = ps.executeQuery();
-			
-			while (rs.next()) {
-				Book b = new Book();
-				b.setTitle(rs.getString(1));
-				b.setBno(rs.getInt(2));
-				b.setAuthor(rs.getString(3));
-				b.setPublisher(rs.getString(4));
-				b.setBcnt(rs.getInt(8));
-				
-				list.add(b);
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+	
 
-	@Override
-	public boolean insertRental(int bno, String id5) {
-		try {
-			
-			String sql = "insert into rental_book values(rno_seq.nextval,?,?,sysdate,sysdate+7,'')";
-			PreparedStatement ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, bno);
-			ps.setString(2, id5);
-			
-			
-			int res = ps.executeUpdate();
-			
-			if (res>=1) {
-				return true;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+	
 
 	@Override
 	public List<Rental> myRental(String id5) {
