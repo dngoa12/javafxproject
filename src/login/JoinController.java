@@ -148,7 +148,7 @@ public class JoinController extends InitController implements Initializable{
 		// 조인어드민창에서 내용을 입력하고 빈창이 있거나 비밀번호가 다르면 다시 입력하게 하고 알맞게 입력하면 내용을 저장하는 메서드 그후 창을 끈다
 		User u = new User();
 		TextField tfName = (TextField) root.lookup("#name");
-		TextField tfId = (TextField) root.lookup("#id");
+		TextField tfId = (TextField) root.lookup("#userId");
 		PasswordField pfPw = (PasswordField) root.lookup("#pw");
 		PasswordField pfPwOk = (PasswordField) root.lookup("#pwOk");
 		TextField tfBirth = (TextField) root.lookup("#birth");

@@ -113,9 +113,7 @@ public class AdminController extends InitController implements Initializable{
 		Label l2 = (Label) root.lookup("#eachBno");
 		Label l3 = (Label) root.lookup("#eachAuthor");
 		Label l4 = (Label) root.lookup("#eachPublisher");
-		Label l5 = (Label) root.lookup("#eachGenre");
-		Label l6 = (Label) root.lookup("#eachCategory");
-		Label l7 = (Label) root.lookup("#eachYear");
+		
 		Label l8 = (Label) root.lookup("#eachBcnt");
 		
 		l1.setText(b.getTitle());

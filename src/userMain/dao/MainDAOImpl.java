@@ -31,8 +31,8 @@ public class MainDAOImpl implements MainDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "c##dngoa12";
-	String password = "oracle";
+	String user = "c##baek";
+	String password = "1075";
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String sql = null;
 	Alert alert;

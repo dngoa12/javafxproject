@@ -23,8 +23,8 @@ public class DAOImpl implements DAO{
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
-			String user = "c##dngoa12";
-			String pwd = "oracle";
+			String user = "c##baek";
+			String pwd = "1075";
 			
 			con = DriverManager.getConnection(url, user, pwd);
 		} catch (Exception e) {
@@ -363,6 +363,76 @@ public class DAOImpl implements DAO{
 			}
 			
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public User mypageLogin(String id, String pw) {
+		try {
+			String sql = "select * from buser where id=? and pw=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, pw);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				User u = new User();
+				u.setName(rs.getString("name"));
+				u.setId(rs.getString("id"));
+				u.setPw(rs.getString("pw"));
+				u.setBirth(rs.getString("birth"));
+				u.setEmail(rs.getString("email"));
+				
+				return u;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean mypageModify(User u, String id5) {
+		try {
+			String sql = "update buser set name=?, pw=?, birth=?, email=? where id=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, u.getName());
+			ps.setString(2, u.getPw());
+			ps.setString(3, u.getBirth());
+			ps.setString(4, u.getEmail());
+			ps.setString(5, id5);
+			
+			int res = ps.executeUpdate();
+			
+			if (res>=1) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteUser(String id, String pw) {
+		try {
+			String sql = "delete from buser where id=? and pw=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			ps.setString(2, pw);
+			
+			int res = ps.executeUpdate();
+			
+			if (res>=1) {
+				return true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

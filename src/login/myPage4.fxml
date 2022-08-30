@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myPage.MypageController">
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.MyPageController">
    <children>
       <Label layoutX="14.0" layoutY="21.0" prefHeight="36.0" prefWidth="118.0" text="내 정보">
          <font>
@@ -26,7 +26,7 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutY="246.0" mnemonicParsing="false" onAction="#logoutproc" prefHeight="60.0" prefWidth="112.0" text="로그아웃">
+      <Button layoutY="246.0" mnemonicParsing="false" onAction="#logoutProc" prefHeight="60.0" prefWidth="112.0" text="이       전">
          <font>
             <Font size="14.0" />
          </font></Button>

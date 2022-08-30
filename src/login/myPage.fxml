@@ -22,5 +22,6 @@
       <Button fx:id="bannap" layoutX="529.0" layoutY="95.0" mnemonicParsing="false" text="반납" />
       <Label layoutX="46.0" layoutY="23.0" text="회원님 환영합니다." />
       <Button layoutX="481.0" layoutY="19.0" mnemonicParsing="false" onAction="#goUserMain" text="메인페이지로" />
+      <Button onAction="#goModifyMyInfo" layoutX="397.0" layoutY="19.0" mnemonicParsing="false" text="정보수정" />
    </children>
 </AnchorPane>

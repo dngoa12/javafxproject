@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myPage.MypageController">
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.MyPageController">
    <children>
       <Label layoutX="14.0" layoutY="21.0" prefHeight="36.0" prefWidth="118.0" text="내 정보">
          <font>
@@ -22,20 +22,15 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutY="249.0" mnemonicParsing="false" onAction="#logoutProc" prefHeight="60.0" prefWidth="112.0" text="로그아웃">
+      <Button layoutY="249.0" mnemonicParsing="false" onAction="#logoutProc" prefHeight="60.0" prefWidth="112.0" text="이       전">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <TextField fx:id="ID" layoutX="259.0" layoutY="49.0" prefHeight="29.0" prefWidth="282.0" promptText="현재 아이디 입력" />
       <TextField fx:id="modName" layoutX="259.0" layoutY="88.0" prefHeight="29.0" prefWidth="282.0" promptText="수정할 이름 입력" />
       <PasswordField fx:id="modPw" layoutX="259.0" layoutY="128.0" prefHeight="29.0" prefWidth="282.0" promptText="수정할 비밀번호 입력" />
       <PasswordField fx:id="modPwok" layoutX="259.0" layoutY="171.0" prefHeight="29.0" prefWidth="282.0" promptText="수정할 비밀번호 확인 입력" />
       <TextField fx:id="modBirth" layoutX="259.0" layoutY="208.0" prefHeight="29.0" prefWidth="282.0" promptText="수정할 생년월일 입력" />
       <TextField fx:id="modEmail" layoutX="259.0" layoutY="249.0" prefHeight="29.0" prefWidth="282.0" promptText="수정할 이메일 입력" />
-      <Label layoutX="150.0" layoutY="54.0" text="현재 아이디">
-         <font>
-            <Font size="14.0" />
-         </font></Label>
       <Label layoutX="155.0" layoutY="93.0" text="이 름">
          <font>
             <Font size="14.0" />
@@ -62,7 +57,7 @@
          <font>
             <Font size="14.0" />
          </font></ToggleButton>
-      <Button layoutX="480.0" layoutY="309.0" mnemonicParsing="false"  onAction="#modifyUser" prefHeight="29.0" prefWidth="67.0" text="수    정">
+      <Button layoutX="480.0" layoutY="309.0" mnemonicParsing="false" onAction="#modifyUser" prefHeight="29.0" prefWidth="67.0" text="수    정">
          <font>
             <Font size="14.0" />
          </font></Button>

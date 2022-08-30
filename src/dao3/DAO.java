@@ -19,6 +19,10 @@ public interface DAO {
 	public boolean modifyBook(Book b);
 	public boolean deleteBook(Book b);
 	
+	public User mypageLogin(String id, String pw);
+	public boolean mypageModify(User u, String id5);
+	public boolean deleteUser(String id, String pw);
+	
 	public List<User> allUser();
 	public List<Book> allBook();
 	public List<Book> searchBook(String title);
