@@ -124,14 +124,24 @@ public class AdminController extends InitController implements Initializable{
 		
 		ImageView iv = (ImageView) root.lookup("#eachImage");
 		
-		if (l2.getText().equals("1")) {
-			iv.setImage(new Image("/img/java.jpg"));
-		} else if (l2.getText().equals("2")) {
-			iv.setImage(new Image("/img/oracle.jpg"));
-		} else if (l2.getText().equals("3")) {
-			iv.setImage(new Image("/img/sapiens.jpg"));
-		} else if (l2.getText().equals("4")) {
-			iv.setImage(new Image("/img/faust1.jpg"));
+		if (l1.getText().equals("금영석교수님의 코딩비법")) {
+			iv.setImage(new Image("/img/javabook.png"));
+		} else if (l1.getText().equals("마님은 왜 돌쇠에게만 흰 쌀밥을 주었을까?")) {
+			iv.setImage(new Image("/img/rice.png"));
+		} else if (l1.getText().equals("이순신 위인전")) {
+			iv.setImage(new Image("/img/who_leesunsin.jpg"));
+		} else if (l1.getText().equals("사춘기와 성")) {
+			iv.setImage(new Image("/img/who_sachungi.jpg"));
+		} else if (l1.getText().equals("그리스 로마 신화")) {
+			iv.setImage(new Image("/img/greece.jpg"));
+		} else if (l1.getText().equals("마법천자문")) {
+			iv.setImage(new Image("/img/mabubchunjamun.jpg"));
+		} else if (l1.getText().equals("신")) {
+			iv.setImage(new Image("/img/sin.jpg"));
+		} else if (l1.getText().equals("제3 인류")) {
+			iv.setImage(new Image("/img/3rd_people.jpg"));
+		} else if (l1.getText().equals("무인도에서 살아남기")) {
+			iv.setImage(new Image("/img/mooindo.jpg"));
 		}
 	}
 
